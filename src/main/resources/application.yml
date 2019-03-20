@@ -1,0 +1,47 @@
+spring:
+  application:
+    name: CamelSample
+  jackson:
+    default-property-inclusion: non_empty
+    deserialization:
+      accept-empty-string-as-null-object: true
+      accept-empty-array-as-null-object: true
+      fail-on-null-for-primitives: true
+  jpa:
+    show-sql: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: always
+  info:
+    git:
+      mode: full
+
+logging:
+  level:
+    root: warn
+    org.erd.camelsample: debug
+#    org.apache.camel: debug
+
+camel:
+  rest:
+    binding-mode: auto
+    api-property:
+      api.title: Camel Sample
+      api.version: '1.0'
+      api.description: Camel Sample
+      api.contact.name: Eric Deandrea
+      api.contact.email: edeandrea@redhat.com
+    data-format-property:
+      prettyPrint: true
+#    api-context-route-id: products-api
+#    api-context-listing: true
+    api-context-path: api-doc
+    component: servlet
+  springboot:
+    name: ${spring.application.name}
